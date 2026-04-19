@@ -55,31 +55,34 @@ function SignupPage() {
   return (
     <div className="min-h-screen flex font-sans bg-slate-50">
       {/* Left side - Branding (Hidden on mobile) */}
-      <div className="hidden lg:flex w-1/2 bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 p-12 flex-col justify-between relative overflow-hidden">
-        {/* Abstract background shapes */}
+      <div className="hidden lg:flex w-1/2 bg-slate-900 p-12 flex-col justify-between relative overflow-hidden">
+        {/* Blueprint background and shapes */}
+        <div className="absolute inset-0 bg-blueprint-dark opacity-10 pointer-events-none"></div>
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 pointer-events-none">
           <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-indigo-500 blur-3xl"></div>
-          <div className="absolute top-1/2 right-12 w-80 h-80 rounded-full bg-blue-500 blur-3xl"></div>
+          <div className="absolute top-1/2 right-12 w-80 h-80 rounded-full bg-amber-500 blur-3xl"></div>
         </div>
 
         <div className="relative z-10 flex items-center space-x-3">
-          <Building2 className="text-indigo-400" size={32} />
-          <span className="text-2xl font-bold text-white tracking-tight">BuildRight</span>
+          <div className="flex items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-indigo-800 p-2 text-amber-400 shadow-md">
+             <Building2 size={32} strokeWidth={2.5} />
+          </div>
+          <span className="text-3xl font-black text-white tracking-tight">Build<span className="text-amber-500">Right</span></span>
         </div>
         
         <div className="relative z-10 max-w-md">
           <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
-            Start building smarter today.
+            Discover Our Work.
           </h1>
-          <p className="text-purple-200 text-lg leading-relaxed mb-8">
-            Join thousands of construction professionals who are growing their business with BuildRight. 
+          <p className="text-indigo-200 text-lg leading-relaxed mb-8">
+            This platform showcases the work of a professional civil engineering firm and allows clients to explore projects and connect for inquiries.
           </p>
 
           <div className="space-y-4">
             {[
-              "Manage quotes and inquiries easily",
-              "Track project progress in real-time",
-              "Collaborate with your entire team seamlessly"
+              "Explore our premium projects",
+              "View architectural plans",
+              "Connect for new inquiries"
             ].map((feature, idx) => (
               <div key={idx} className="flex items-center space-x-3 text-indigo-100">
                 <div className="p-1 rounded-full bg-indigo-500/30">
@@ -99,16 +102,18 @@ function SignupPage() {
       {/* Right side - Form */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-6 md:p-12 relative overflow-hidden bg-slate-50">
         {/* Decorative elements for mobile */}
-        <div className="lg:hidden absolute top-0 left-0 w-full h-64 bg-gradient-to-br from-indigo-900 to-purple-900 rounded-b-3xl"></div>
+        <div className="lg:hidden absolute top-0 left-0 w-full h-64 bg-slate-900 rounded-b-3xl">
+           <div className="absolute inset-0 bg-blueprint-dark opacity-10 pointer-events-none"></div>
+        </div>
         
         <div className="w-full max-w-md relative z-10">
           <div className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-xl border border-slate-100 p-8 md:p-10 transition-all duration-300 hover:shadow-2xl">
             <div className="mb-8 text-center lg:text-left">
               <div className="flex lg:hidden items-center justify-center space-x-2 mb-6">
-                <div className="p-2 bg-indigo-600 rounded-lg">
-                  <Building2 className="text-white" size={24} />
+                <div className="p-2 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-lg text-amber-400">
+                  <Building2 size={24} strokeWidth={2.5} />
                 </div>
-                <span className="text-2xl font-bold text-slate-800">BuildRight</span>
+                <span className="text-2xl font-black text-slate-800">Build<span className="text-amber-500">Right</span></span>
               </div>
               <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Create Account</h2>
               <p className="text-slate-500 mt-2">Get started with your free account</p>
@@ -222,7 +227,7 @@ function SignupPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="group relative w-full flex justify-center py-3.5 px-4 rounded-xl border border-transparent text-sm font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-4 focus:ring-indigo-500/20 disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-300 shadow-lg shadow-indigo-600/20"
+                  className="group relative w-full flex justify-center py-3.5 px-4 rounded-xl border border-transparent text-sm font-bold text-white bg-gradient-to-r from-indigo-600 to-indigo-800 hover:from-indigo-700 hover:to-indigo-900 focus:outline-none focus:ring-4 focus:ring-indigo-500/20 disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-300 shadow-lg shadow-indigo-600/20 text-lg"
                 >
                   {loading ? (
                     <span className="flex items-center space-x-2">
@@ -235,7 +240,7 @@ function SignupPage() {
                   ) : (
                     <span className="flex items-center space-x-2">
                       <span>Sign Up Now</span>
-                      <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform text-amber-400" />
                     </span>
                   )}
                 </button>

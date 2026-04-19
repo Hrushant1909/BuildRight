@@ -25,7 +25,13 @@ public class ProjectRequest {
     @NotBlank(message = "Date is required")
     private String date;
 
+    private String budget;
+    private String area;
+    private String year;
+
     private org.springframework.web.multipart.MultipartFile image;
+
+    private java.util.List<org.springframework.web.multipart.MultipartFile> additionalImages;
 
     private org.springframework.web.multipart.MultipartFile pdf;
 }

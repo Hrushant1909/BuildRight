@@ -24,6 +24,9 @@ public class ProjectService {
         project.setDescription(request.getDescription().trim());
         project.setLocation(request.getLocation().trim());
         project.setDate(request.getDate().trim());
+        project.setBudget(request.getBudget() != null ? request.getBudget().trim() : "");
+        project.setArea(request.getArea() != null ? request.getArea().trim() : "");
+        project.setYear(request.getYear() != null ? request.getYear().trim() : "");
 
         try {
             String uploadDir = "uploads/";
@@ -37,6 +40,17 @@ public class ProjectService {
                 java.nio.file.Path imagePath = uploadPath.resolve(imageFileName);
                 java.nio.file.Files.copy(request.getImage().getInputStream(), imagePath, java.nio.file.StandardCopyOption.REPLACE_EXISTING);
                 project.setImageUrl("/uploads/" + imageFileName);
+            }
+
+            if (request.getAdditionalImages() != null) {
+                for (org.springframework.web.multipart.MultipartFile file : request.getAdditionalImages()) {
+                    if (!file.isEmpty()) {
+                        String addFileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+                        java.nio.file.Path addPath = uploadPath.resolve(addFileName);
+                        java.nio.file.Files.copy(file.getInputStream(), addPath, java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+                        project.getAdditionalImages().add("/uploads/" + addFileName);
+                    }
+                }
             }
 
             if (request.getPdf() != null && !request.getPdf().isEmpty()) {
