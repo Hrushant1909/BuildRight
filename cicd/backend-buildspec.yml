@@ -23,13 +23,19 @@ phases:
 
   post_build:
     commands:
+      - rm -rf deploy
       - mkdir deploy
       - cp target/*.jar deploy/app.jar
-      - cp ../cicd/appspec.yml deploy/
+
+      # FORCE COPY (overwrite)
+      - cp -f ../cicd/appspec.yml deploy/appspec.yml
+
+      # COPY scripts
       - cp -r ../cicd/scripts deploy/
+
       - cd deploy
       - zip -r app.zip .
-      - aws s3 cp app.zip s3://$ARTIFACT_BUCKET/app.zip
+      - aws s3 cp app.zip s3://$ARTIFACT_BUCKET/app.zip --no-cache
 
 artifacts:
   files:
