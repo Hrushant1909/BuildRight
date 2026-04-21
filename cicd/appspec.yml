@@ -1,6 +1,8 @@
 version: 0.0
 os: linux
 
+file_exists_behavior: OVERWRITE 
+
 files:
   - source: app.jar
     destination: /home/ec2-user/
@@ -10,7 +12,7 @@ hooks:
     - location: scripts/start.sh
       timeout: 300
       runas: ec2-user
-      
+
   ApplicationStop:
     - location: scripts/stop.sh
       timeout: 300
