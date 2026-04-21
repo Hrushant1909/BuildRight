@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    S3_BUCKET: buildright-frontend   
+    S3_BUCKET: buildright-frontend-hrushant   
 
 phases:
   install:
