@@ -2,12 +2,16 @@ version: 0.0
 os: linux
 
 files:
-  - source: backend/target
+  - source: app.jar
     destination: /home/ec2-user/
-    overwrite: true
 
 hooks:
+  ApplicationStop:
+    - location: backend/scripts/stop.sh
+      timeout: 300
+      runas: ec2-user
+
   ApplicationStart:
-    - location: cicd/scripts/restart-backend.sh
+    - location: backend/scripts/start.sh
       timeout: 300
       runas: ec2-user

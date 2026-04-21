@@ -23,9 +23,13 @@ phases:
 
   post_build:
     commands:
-      - echo "Uploading JAR to S3..."
-      - ls target/
-      - aws s3 cp target/*.jar s3://$ARTIFACT_BUCKET/app.jar
+      - mkdir deploy
+      - cp target/*.jar deploy/app.jar
+      - cp ../cicd/appspec.yml deploy/
+      - cp -r scripts deploy/
+      - cd deploy
+      - zip -r app.zip .
+      - aws s3 cp app.zip s3://$ARTIFACT_BUCKET/app.zip
 
 artifacts:
   files:
