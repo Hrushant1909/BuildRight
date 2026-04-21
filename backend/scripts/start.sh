@@ -1,29 +1,15 @@
 #!/bin/bash
 
-echo "===== START SCRIPT STARTED ====="
+echo "Starting app..."
 
-# Move to correct directory
-cd /home/ec2-user || exit
+export DB_URL=jdbc:mysql://database-2.cfugowg0e22z.ap-south-1.rds.amazonaws.com:3306/<YOUR_DB_NAME>
+export DB_USER=admin
+export DB_PASS=hrushant1909
 
-echo "Current directory:"
-pwd
+cd /home/ec2-user
 
-echo "Files present:"
-ls -l
-
-echo "Stopping old app..."
-pkill -f app.jar || true
-
-echo "Checking Java..."
-java -version
-
-echo "Starting new app..."
+pkill -f jar || true
 
 nohup java -jar app.jar > app.log 2>&1 &
 
-sleep 5
-
-echo "Checking if app started..."
-ps aux | grep java
-
-echo "===== START SCRIPT COMPLETED ====="
+echo "Done"
