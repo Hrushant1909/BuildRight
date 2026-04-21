@@ -25,16 +25,29 @@ phases:
     commands:
       - rm -rf deploy
       - mkdir deploy
+
+      # copy jar
       - cp target/*.jar deploy/app.jar
 
-      # FORCE COPY (overwrite)
+      # DEBUG: print appspec being copied
+      - echo "==== APPSPEC CONTENT ===="
+      - cat ../cicd/appspec.yml
+
+      # FORCE overwrite appspec
       - cp -f ../cicd/appspec.yml deploy/appspec.yml
 
-      # COPY scripts
+      # copy scripts
       - cp -r ../cicd/scripts deploy/
 
+      # verify inside deploy
+      - ls deploy
+      - cat deploy/appspec.yml
+
+      # zip
       - cd deploy
       - zip -r app.zip .
+
+      # upload
       - aws s3 cp app.zip s3://$ARTIFACT_BUCKET/app.zip
 
 artifacts:
