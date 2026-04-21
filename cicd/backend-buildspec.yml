@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    ARTIFACT_BUCKET: buildright-artifacts   # create this bucket
+    ARTIFACT_BUCKET: buildright-artifacts
 
 phases:
   install:
@@ -23,7 +23,8 @@ phases:
 
   post_build:
     commands:
-      - echo Uploading JAR to S3...
+      - echo "Uploading JAR to S3..."
+      - ls target/
       - aws s3 cp target/*.jar s3://$ARTIFACT_BUCKET/app.jar
 
 artifacts:
