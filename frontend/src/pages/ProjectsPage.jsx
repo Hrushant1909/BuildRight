@@ -25,8 +25,7 @@ export default function ProjectsPage() {
 
   const getFullImageUrl = (url) => {
     if (!url) return '';
-    if (url.startsWith('http')) return url;
-    return `http://localhost:8084${url}`;
+    return url;
   };
 
   return (

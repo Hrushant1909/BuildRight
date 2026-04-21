@@ -182,6 +182,8 @@ export default function AdminDashboard() {
       await fetchProjects()
       setActiveTab('manage-projects')
     } catch (error) {
+      console.error('Project Upload Error:', error);
+      console.error('Error Response Details:', error.response?.data);
       setMessage(error.response?.data?.message || 'Failed to add project')
     } finally {
       setSubmitting(false)
@@ -301,8 +303,7 @@ export default function AdminDashboard() {
 
   const getFullUrl = (url) => {
     if (!url) return '';
-    if (url.startsWith('http')) return url;
-    return `http://localhost:8084${url}`;
+    return url;
   }
 
   return (

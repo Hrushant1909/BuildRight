@@ -18,8 +18,7 @@ export default function ProjectShowcase() {
 
   const getFullUrl = (url) => {
     if (!url) return '';
-    if (url.startsWith('http')) return url;
-    return `http://localhost:8084${url}`;
+    return url;
   };
 
   if(projects.length === 0) return null;

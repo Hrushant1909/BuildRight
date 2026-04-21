@@ -1,0 +1,13 @@
+version: 0.0
+os: linux
+
+files:
+  - source: backend/target
+    destination: /home/ec2-user/
+    overwrite: true
+
+hooks:
+  ApplicationStart:
+    - location: cicd/scripts/restart-backend.sh
+      timeout: 300
+      runas: ec2-user

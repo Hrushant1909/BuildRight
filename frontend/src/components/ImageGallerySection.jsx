@@ -16,8 +16,7 @@ export default function ImageGallerySection() {
 
   const getFullUrl = (url) => {
     if (!url) return '';
-    if (url.startsWith('http')) return url;
-    return `http://localhost:8084${url}`;
+    return url;
   };
 
   if (loading) return (
