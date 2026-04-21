@@ -1,17 +1,31 @@
 version: 0.2
 
+env:
+  variables:
+    ARTIFACT_BUCKET: buildright-artifacts   # create this bucket
+
 phases:
   install:
     runtime-versions:
       java: corretto17
+    commands:
+      - echo Installing Maven...
+      - yum install -y maven
+
   pre_build:
     commands:
       - cd backend
+      - mvn clean
+
   build:
     commands:
-      - mvn clean package
+      - mvn package -DskipTests
+
+  post_build:
+    commands:
+      - echo Uploading JAR to S3...
+      - aws s3 cp target/*.jar s3://$ARTIFACT_BUCKET/app.jar
 
 artifacts:
-  base-directory: backend/target
   files:
-    - '*.jar'
+    - backend/target/*.jar
