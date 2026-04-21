@@ -16,6 +16,6 @@ pkill -f jar || true
 
 echo "Running app in foreground (DEBUG)..."
 
-java -jar app.jar
+nohup java -jar /home/ec2-user/app.jar > /home/ec2-user/app.log 2>&1 &
 
 echo "===== END ====="
