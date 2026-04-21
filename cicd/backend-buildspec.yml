@@ -35,7 +35,7 @@ phases:
 
       - cd deploy
       - zip -r app.zip .
-      - aws s3 cp app.zip s3://$ARTIFACT_BUCKET/app-$(date +%s).zip
+      - aws s3 cp app.zip s3://$ARTIFACT_BUCKET/app.zip
 
 artifacts:
   files:
