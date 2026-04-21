@@ -7,11 +7,11 @@ files:
 
 hooks:
   ApplicationStop:
-    - location: backend/scripts/stop.sh
+    - location: scripts/stop.sh
       timeout: 300
       runas: ec2-user
 
   ApplicationStart:
-    - location: backend/scripts/start.sh
+    - location: scripts/start.sh
       timeout: 300
       runas: ec2-user
