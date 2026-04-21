@@ -26,7 +26,7 @@ phases:
       - mkdir deploy
       - cp target/*.jar deploy/app.jar
       - cp ../cicd/appspec.yml deploy/
-      - cp -r scripts deploy/
+      - cp -r ../cicd/scripts deploy/
       - cd deploy
       - zip -r app.zip .
       - aws s3 cp app.zip s3://$ARTIFACT_BUCKET/app.zip
