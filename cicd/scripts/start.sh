@@ -2,7 +2,7 @@
 
 echo "===== STARTING APPLICATION ====="
 
-export DB_URL=jdbc:mysql://database-2.cfugowg0e22z.ap-south-1.rds.amazonaws.com:3306/buildright
+export DB_URL=jdbc:mysql://buildright-prod-mysql.cfugowg0e22z.ap-south-1.rds.amazonaws.com:3306/buildrightdb
 export DB_USER=admin
 export DB_PASS=hrushant1909
 
