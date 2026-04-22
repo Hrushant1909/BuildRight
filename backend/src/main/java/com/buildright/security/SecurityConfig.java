@@ -68,7 +68,7 @@ public class SecurityConfig {
                 "http://127.0.0.1:5173",
                 "http://buildright-frontend.s3-website.ap-south-1.amazonaws.com",
                 "http://buildright-frontend-hrushant.s3-website.ap-south-1.amazonaws.com",
-                "http://buildright-prod-alb-1143510176.ap-south-1.elb.amazonaws.com"
+                "http://buildright-prod-alb-446380660.ap-south-1.elb.amazonaws.com"
         ));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
